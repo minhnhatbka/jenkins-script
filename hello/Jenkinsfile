@@ -1,0 +1,19 @@
+pipeline {
+  agent any
+  stages {
+    stage('Maven Build') {
+      parallel {
+        stage('Maven Build') {
+          steps {
+            sh 'echo "Hello"'
+          }
+        }
+        stage('Song song') {
+          steps {
+            sleep 10
+          }
+        }
+      }
+    }
+  }
+}
