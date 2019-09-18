@@ -33,6 +33,10 @@ pipeline {
     stage('Maven Build') {
       steps {
         sh 'echo "Done"'
+        dir(path: 'config-server') {
+          sh 'echo `pwd`'
+        }
+
       }
     }
   }
