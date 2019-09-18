@@ -5,12 +5,18 @@ pipeline {
       parallel {
         stage('git config-server') {
           steps {
-            git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/config-server.git', branch: 'dev', credentialsId: 'bitbucket_nhattm2')
+            retry(count: 2) {
+              git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/config-server.git', branch: 'dev', credentialsId: 'bitbucket_nhattm2')
+            }
+
           }
         }
         stage('git ci-config') {
           steps {
-            git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/ci-config.git', branch: 'master', credentialsId: 'bitbucket_nhattm2')
+            retry(count: 2) {
+              git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/ci-config.git', branch: 'master', credentialsId: 'bitbucket_nhattm2')
+            }
+
           }
         }
         stage('git ci-db-migration-script') {
