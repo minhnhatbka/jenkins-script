@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Git') {
       steps {
-        git(url: 'https://github.com/minhnhatbka/hello.git', branch: 'dev', credentialsId: 'minhnhatbka')
+        git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/config-server.git', branch: 'dev', credentialsId: 'nhattm2')
       }
     }
   }
