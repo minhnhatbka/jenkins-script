@@ -21,17 +21,26 @@ pipeline {
         }
         stage('git ci-db-migration-script') {
           steps {
-            git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/ci-db-migration-script.git', branch: 'master', credentialsId: 'bitbucket_nhattm2')
+            retry(count: 2) {
+              git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/ci-db-migration-script.git', branch: 'master', credentialsId: 'bitbucket_nhattm2')
+            }
+
           }
         }
         stage('git ci-deployment') {
           steps {
-            git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/ci-deployment.git', branch: 'master', credentialsId: 'bitbucket_nhattm2')
+            retry(count: 2) {
+              git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/ci-deployment.git', branch: 'master', credentialsId: 'bitbucket_nhattm2')
+            }
+
           }
         }
         stage('ci-jenkins') {
           steps {
-            git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/ci-jenkins.git', branch: 'master', credentialsId: 'bitbucket_nhattm2')
+            retry(count: 2) {
+              git(url: 'http://nhattm2@bitbucket.digital.vn/scm/cds/ci-jenkins.git', branch: 'master', credentialsId: 'bitbucket_nhattm2')
+            }
+
           }
         }
       }
